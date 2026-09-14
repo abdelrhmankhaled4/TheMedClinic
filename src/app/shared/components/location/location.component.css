@@ -1,0 +1,490 @@
+.location-section {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+  padding: 6rem 5%;
+  position: relative;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #000000;
+  color: #FFFFFF;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: #6B7280;
+  font-size: 1.1rem;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Bento Grid */
+.location-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Map Card */
+.map-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 520px;
+  transition: all 0.3s ease;
+}
+
+.map-card:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  border-color: #D1D5DB;
+}
+
+.map-header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #F3F4F6;
+  z-index: 2;
+}
+
+.map-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #059669;
+}
+
+.pulse-dot {
+  width: 9px;
+  height: 9px;
+  background-color: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.map-landmark {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #4B5563;
+  font-weight: 500;
+}
+
+.map-frame {
+  flex: 1;
+  width: 100%;
+  min-height: 380px;
+  position: relative;
+}
+
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.map-overlay-actions {
+  padding: 1rem 1.25rem;
+  background: #FFFFFF;
+  border-top: 1px solid #F3F4F6;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.map-btn-primary {
+  background: #000000;
+  color: #FFFFFF;
+  flex: 1;
+  justify-content: center;
+}
+
+.map-btn-primary:hover {
+  background: #27272A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.map-btn-secondary {
+  background: #F3F4F6;
+  color: #374151;
+}
+
+.map-btn-secondary:hover {
+  background: #E5E7EB;
+  color: #111827;
+}
+
+.map-btn-secondary.copied {
+  background: #ECFDF5;
+  color: #065F46;
+}
+
+/* Info Column */
+.info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.bento-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.bento-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  border-color: #D1D5DB;
+}
+
+/* Address Card */
+.address-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.card-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #000000;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.card-body {
+  flex: 1;
+}
+
+.card-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6B7280;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 0.5rem;
+}
+
+.address-text {
+  color: #4B5563;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 0.75rem;
+}
+
+.unit-badge {
+  display: inline-block;
+  background: #F3F4F6;
+  color: #1F2937;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #E5E7EB;
+}
+
+.plus-code-box {
+  background: #F9FAFB;
+  border: 1px dashed #D1D5DB;
+  border-radius: 10px;
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.plus-code-box:hover {
+  background: #F3F4F6;
+  border-color: #000000;
+}
+
+.plus-code-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.plus-code-label {
+  color: #6B7280;
+  font-weight: 500;
+}
+
+.plus-code-value {
+  color: #111827;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+.plus-copy-hint {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4B5563;
+  background: #E5E7EB;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+/* Contact Pills Row */
+.contact-bento-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.contact-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.15rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact-pill:hover {
+  transform: translateY(-2px);
+}
+
+.pill-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.phone-bg {
+  background: #EEF2FF;
+  color: #4F46E5;
+}
+
+.whatsapp-bg {
+  background: #DCFCE7;
+  color: #16A34A;
+}
+
+.pill-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pill-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #6B7280;
+  font-weight: 500;
+}
+
+.pill-value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pill-action {
+  color: #9CA3AF;
+  transition: transform 0.2s ease;
+}
+
+.contact-pill:hover .pill-action {
+  transform: translateX(-3px);
+  color: #111827;
+}
+
+[dir="ltr"] .contact-pill:hover .pill-action {
+  transform: translateX(3px);
+}
+
+[dir="ltr"] .rtl-flip {
+  transform: rotate(180deg);
+}
+
+/* Facilities & Driving CTA */
+.facilities-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.facility-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.facility-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #F3F4F6;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.directions-cta {
+  background: #000000;
+  color: #FFFFFF;
+  padding: 0.9rem 1.5rem;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.directions-cta:hover {
+  background: #27272A;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-card {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .location-section {
+    padding: 4rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .contact-bento-row {
+    grid-template-columns: 1fr;
+  }
+
+  .facilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .address-card {
+    flex-direction: column;
+  }
+
+  .map-card {
+    min-height: 360px;
+  }
+}

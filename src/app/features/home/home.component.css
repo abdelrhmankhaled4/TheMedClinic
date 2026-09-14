@@ -1,0 +1,17 @@
+.main-content {
+  padding-top: 70px;
+}
+
+.section-padding {
+  padding: 5rem 5%;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 60px;
+  }
+  
+  .section-padding {
+    padding: 3rem 1rem;
+  }
+}

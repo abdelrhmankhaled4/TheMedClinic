@@ -1,0 +1,44 @@
+<section class="services section-padding">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        {{ langService.getText('خدماتنا', 'Our Services') }}
+      </h2>
+      <p class="section-subtitle">
+        {{ langService.getText(
+          'نقدم مجموعة شاملة من الخدمات الطبية والتجميلية لعلاج الأمراض الجلدية وتحسين جمال بشرتك',
+          'We offer a comprehensive range of medical and cosmetic services for dermatology treatment and skin beauty enhancement'
+        )}}
+      </p>
+    </div>
+    
+    <div class="services-grid">
+      <div 
+        class="service-card" 
+        *ngFor="let service of services"
+      >
+        <div class="service-img-wrap" *ngIf="service.image">
+          <img [src]="service.image" [alt]="langService.getText(service.name.ar, service.name.en)" class="service-img" loading="lazy" />
+          <div class="service-img-overlay"></div>
+          <div class="service-icon-float">
+            <app-icon [name]="service.icon" [size]="28"></app-icon>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3 class="service-title">
+            {{ langService.getText(service.name.ar, service.name.en) }}
+          </h3>
+          <p class="service-description">
+            {{ langService.getText(service.description.ar, service.description.en) }}
+          </p>
+          <div class="service-footer">
+            <span class="price-badge">{{ service.price }}</span>
+            <a routerLink="/book-appointment" class="service-btn">
+              {{ langService.getText('احجز الآن', 'Book Now') }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

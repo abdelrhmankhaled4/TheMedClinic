@@ -1,0 +1,168 @@
+<section class="location-section" id="location">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <div class="header-badge">
+        <app-icon name="location" [size]="16"></app-icon>
+        <span>{{ langService.getText('الموقع وسهولة الوصول', 'Location & Access') }}</span>
+      </div>
+      <h2 class="section-title">
+        {{ langService.getText('زورونا في عيادات ذا ميد', 'Visit Us at The Med Clinics') }}
+      </h2>
+      <p class="section-subtitle">
+        {{ langService.getText(
+          'موقع متميز في قلب أكتوبر جاردنز بمول الحي الإيطالي، مع مواقف سيارات وسهولة وصول تامة',
+          'Prime location in the heart of October Gardens at Italian Square Mall, with accessible parking'
+        )}}
+      </p>
+    </div>
+
+    <!-- Location Bento Grid -->
+    <div class="location-grid">
+      <!-- Left: Interactive Map Container -->
+      <div class="map-card">
+        <div class="map-header">
+          <div class="map-status">
+            <span class="pulse-dot"></span>
+            <span class="status-text">{{ langService.getText('مفتوح لاستقبالكم', 'Open for Visits') }}</span>
+          </div>
+          <div class="map-landmark">
+            <app-icon name="hospital" [size]="15"></app-icon>
+            <span>{{ langService.getText('مول الحي الإيطالي', 'Italian Square Mall') }}</span>
+          </div>
+        </div>
+
+        <div class="map-frame">
+          <iframe
+            [src]="safeMapUrl"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Google Maps Location"
+          ></iframe>
+        </div>
+
+        <div class="map-overlay-actions">
+          <a
+            [href]="clinicData.address.googleMapsUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-btn map-btn-primary"
+          >
+            <app-icon name="navigation" [size]="16"></app-icon>
+            <span>{{ langService.getText('فتح في خرائط جوجل', 'Open in Google Maps') }}</span>
+          </a>
+          <button 
+            type="button" 
+            class="map-btn map-btn-secondary" 
+            (click)="copyAddress()"
+            [class.copied]="addressCopied"
+          >
+            <app-icon [name]="addressCopied ? 'check' : 'copy'" [size]="16"></app-icon>
+            <span>{{ addressCopied ? langService.getText('تم النسخ!', 'Copied!') : langService.getText('نسخ العنوان', 'Copy Address') }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: Information & Direct Action Cards -->
+      <div class="info-column">
+        <!-- Address Card -->
+        <div class="bento-card address-card">
+          <div class="card-icon-wrapper">
+            <app-icon name="location" [size]="24"></app-icon>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">{{ langService.getText('العنوان التفصيلي', 'Detailed Address') }}</span>
+            <h3 class="card-title">
+              {{ langService.getText('مول طريق الحي الإيطالي', 'Italian Square Mall') }}
+            </h3>
+            <p class="address-text">
+              {{ langService.getText(clinicData.address.ar, clinicData.address.en) }}
+            </p>
+            <div class="unit-badge">
+              <span>{{ langService.getText('وحدة رقم 18 (18A & 18B)', 'Unit 18 (18A & 18B)') }}</span>
+            </div>
+
+            <div class="plus-code-box" (click)="copyPlusCode()">
+              <div class="plus-code-left">
+                <span class="plus-code-label">Plus Code:</span>
+                <span class="plus-code-value">{{ clinicData.address.plusCode }}</span>
+              </div>
+              <span class="plus-copy-hint">
+                {{ plusCodeCopied ? langService.getText('تم النسخ', 'Copied') : langService.getText('نسخ', 'Copy') }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Contacts Bento -->
+        <div class="contact-bento-row">
+          <!-- Phone Card -->
+          <a [href]="'tel:' + clinicData.contact.phone" class="bento-card contact-pill phone-pill">
+            <div class="pill-icon phone-bg">
+              <app-icon name="phone" [size]="20"></app-icon>
+            </div>
+            <div class="pill-info">
+              <span class="pill-label">{{ langService.getText('اتصال هاتفي مباشر', 'Direct Phone') }}</span>
+              <span class="pill-value" dir="ltr">{{ clinicData.contact.phone }}</span>
+            </div>
+            <div class="pill-action">
+              <app-icon name="arrow-left" [size]="16" class="rtl-flip"></app-icon>
+            </div>
+          </a>
+
+          <!-- WhatsApp Card -->
+          <a 
+            [href]="'https://wa.me/' + clinicData.contact.whatsapp" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="bento-card contact-pill whatsapp-pill"
+          >
+            <div class="pill-icon whatsapp-bg">
+              <app-icon name="whatsapp" [size]="20"></app-icon>
+            </div>
+            <div class="pill-info">
+              <span class="pill-label">{{ langService.getText('محادثة فورية واتساب', 'WhatsApp Instant') }}</span>
+              <span class="pill-value" dir="ltr">{{ clinicData.contact.whatsapp }}</span>
+            </div>
+            <div class="pill-action">
+              <app-icon name="external-link" [size]="16"></app-icon>
+            </div>
+          </a>
+        </div>
+
+        <!-- Highlights / Facilities & CTA -->
+        <div class="bento-card facilities-card">
+          <div class="facilities-grid">
+            <div class="facility-item">
+              <div class="facility-icon">
+                <app-icon name="car" [size]="18"></app-icon>
+              </div>
+              <span>{{ langService.getText('مواقف سيارات مجانية', 'Free Parking Available') }}</span>
+            </div>
+            <div class="facility-item">
+              <div class="facility-icon">
+                <app-icon name="sparkles" [size]="18"></app-icon>
+              </div>
+              <span>{{ langService.getText('سهولة وصول ومصاعد', 'Easy Access & Elevators') }}</span>
+            </div>
+          </div>
+
+          <a 
+            [href]="clinicData.address.googleMapsUrl" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="directions-cta"
+          >
+            <app-icon name="navigation" [size]="20"></app-icon>
+            <span>{{ langService.getText('الحصول على اتجاهات القيادة', 'Get Driving Directions') }}</span>
+            <app-icon name="external-link" [size]="16"></app-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

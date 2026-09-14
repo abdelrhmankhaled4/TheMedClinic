@@ -1,0 +1,170 @@
+<section class="about">
+  <!-- Hero split - Premium Redesign -->
+  <div class="about-hero">
+    <div class="about-container">
+      <div class="about-content-col">
+        <div class="about-badge">
+          <app-icon name="shield-check" [size]="16"></app-icon>
+          <span>{{ langService.getText('عن عيادتنا', 'About Our Clinic') }}</span>
+        </div>
+
+        <h2 class="about-title">
+          {{ langService.getText('عيادات ذا ميد التخصصية', 'The Med Clinics') }}
+        </h2>
+
+        <div class="about-description">
+          <p>
+            {{ langService.getText(
+              'عيادات ذا ميد التخصصية هي مركز طبي متخصص في الأمراض الجلدية والعلاج بالليزر، نقدم خدمات طبية وتجميلية بأعلى معايير الجودة والاحترافية.',
+              'The Med Clinics is a specialized medical center for dermatology and laser treatments, providing medical and cosmetic services with the highest standards of quality and professionalism.'
+            )}}
+          </p>
+          <p>
+            {{ langService.getText(
+              'يتميز فريقنا الطبي بالخبرة والاهتمام بالتفاصيل، مع التزام صارم بمعايير النظافة والتعقيم لضمان سلامة ورضا عملائنا.',
+              'Our medical team is distinguished by expertise and attention to detail, with strict commitment to cleanliness and sterilization standards to ensure the safety and satisfaction of our clients.'
+            )}}
+          </p>
+        </div>
+
+        <div class="highlights-grid">
+          <div class="highlight-card" *ngFor="let h of highlights">
+            <div class="highlight-icon">
+              <app-icon [name]="h.icon" [size]="22"></app-icon>
+            </div>
+            <div class="highlight-content">
+              <span class="highlight-title">{{ langService.getText(h.ar, h.en) }}</span>
+              <span class="highlight-subtitle">{{ langService.getText(h.subtitleAr, h.subtitleEn) }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-actions">
+          <a routerLink="/book-appointment" class="primary-cta">
+            <span>{{ langService.getText('احجز موعدك الآن', 'Book Your Appointment') }}</span>
+            <app-icon name="arrow-right" [size]="18"></app-icon>
+          </a>
+          <div class="rating-badge">
+            <div class="rating-stars">
+              <app-icon name="star-rating" [size]="16"></app-icon>
+              <span class="rating-value">4.9</span>
+            </div>
+            <span class="rating-label">{{ langService.getText('تقييم جوجل', 'Google Rating') }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-image-col">
+        <div class="image-frame">
+          <div class="image-decoration"></div>
+          <img
+            src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=900&q=80&auto=format&fit=crop"
+            alt="The Med Clinics interior"
+            class="about-img"
+          />
+          <div class="image-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats section - Premium Redesign -->
+  <div class="stats-section">
+    <div class="stats-container">
+      <div class="stat-card" *ngFor="let s of stats">
+        <div class="stat-icon">
+          <app-icon [name]="s.icon" [size]="28"></app-icon>
+        </div>
+        <div class="stat-content">
+          <span class="stat-number">{{ s.value }}</span>
+          <span class="stat-label">{{ langService.getText(s.ar, s.en) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Doctor feature - Premium Redesign -->
+  <div class="doctor-section">
+    <div class="doctor-container">
+      <div class="doctor-content-col">
+        <div class="doctor-badge">
+          <app-icon name="award" [size]="16"></app-icon>
+          <span>{{ langService.getText('طبيبنا المميز', 'Our Distinguished Doctor') }}</span>
+        </div>
+
+        <div class="doctor-header">
+          <h3 class="doctor-name">{{ langService.getText('د. نادى', 'Dr. Nada') }}</h3>
+          <div class="doctor-title-row">
+            <span class="doctor-role">{{ langService.getText('المدير الطبي', 'Medical Director') }}</span>
+            <span class="title-separator">·</span>
+            <span class="doctor-specialty">{{ langService.getText('أخصائية الأمراض الجلدية', 'Dermatology Specialist') }}</span>
+          </div>
+        </div>
+
+        <div class="doctor-description">
+          <p>
+            {{ langService.getText(
+              'تتولى د. نادى الإشراف على العلاجات بالليزر والأمراض الجلدية، مع التركيز على تقديم نتائج متميزة تجمع بين الفعالية والراحة. خبرة طبية تمتد لأكثر من 10 سنوات.',
+              'Dr. Nada supervises laser treatments and dermatology cases, focusing on delivering outstanding results that combine effectiveness and comfort. Over 10 years of medical expertise.'
+            )}}
+          </p>
+        </div>
+
+        <div class="expertise-cards">
+          <div class="expertise-card">
+            <div class="expertise-icon">
+              <app-icon name="zap" [size]="20"></app-icon>
+            </div>
+            <div class="expertise-content">
+              <span class="expertise-title">{{ langService.getText('الليزر الطبي', 'Medical Laser') }}</span>
+              <span class="expertise-subtitle">{{ langService.getText('علاجات متقدمة', 'Advanced Treatments') }}</span>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <div class="expertise-icon">
+              <app-icon name="heart-pulse" [size]="20"></app-icon>
+            </div>
+            <div class="expertise-content">
+              <span class="expertise-title">{{ langService.getText('الأمراض الجلدية', 'Dermatology') }}</span>
+              <span class="expertise-subtitle">{{ langService.getText('تشخيص دقيق', 'Accurate Diagnosis') }}</span>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <div class="expertise-icon">
+              <app-icon name="sparkles" [size]="20"></app-icon>
+            </div>
+            <div class="expertise-content">
+              <span class="expertise-title">{{ langService.getText('التجميل', 'Aesthetics') }}</span>
+              <span class="expertise-subtitle">{{ langService.getText('نتائج طبيعية', 'Natural Results') }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="doctor-credentials">
+          <div class="credential-item">
+            <app-icon name="calendar-check" [size]="18"></app-icon>
+            <span>{{ langService.getText('10+ سنوات خبرة', '10+ Years Experience') }}</span>
+          </div>
+          <div class="credential-item">
+            <app-icon name="users" [size]="18"></app-icon>
+            <span>{{ langService.getText('5000+ مريض سعيد', '5000+ Happy Patients') }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doctor-image-col">
+        <div class="image-frame">
+          <div class="image-decoration"></div>
+          <img
+            src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=700&q=80&auto=format&fit=crop"
+            alt="Dr. Nada - Medical Director"
+            class="doctor-img"
+          />
+          <div class="image-accent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

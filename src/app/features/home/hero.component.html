@@ -1,0 +1,42 @@
+<section class="hero">
+  <div class="hero-background">
+    <img
+      src="https://scontent.fcai1-2.fna.fbcdn.net/v/t51.82787-15/797101955_17885972178620954_1504411600156829894_n.jpg?stp=dst-jpg_tt6&cstp=mx1204x1307&ctp=s1204x1307&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHxbHKwNmseQ53Zkg6eisplKYtZVRN7ZPcpi1lVE3tk99F07c053nEzSRJgyDdSz4yRP8F6Yxg8_z1oZh10_IWG&_nc_ohc=0SChbYOC7fsQ7kNvwF2N8D-&_nc_oc=AdqX7wDFsszo_oh42iqNap-6C3_0_QWr11eUev_OjUwXqOd3lZXM9A6zX2I_X9dUhfE&_nc_zt=23&_nc_ht=scontent.fcai1-2.fna&_nc_gid=jeCl4Sagpp3YNfXRCU8ucg&_nc_ss=7b2a8&oh=00_AQJWlpX0zu3sebo5irQqJEH2wrAFreD9Q64qIjC-RlaYxg&oe=6AA677E9"
+      alt="Modern Clinic Interior"
+      class="hero-bg-img"
+    />
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        {{ langService.getText('عيادات ذا ميد التخصصية', 'The Med Clinics') }}
+      </h1>
+
+      <p class="hero-tagline">
+        {{ langService.getText('عناية متخصصة ببشرتك، بخبرة واهتمام في كل تفصيلة', 'Specialized skincare with expertise and attention to every detail') }}
+      </p>
+
+      <p class="hero-subtitle">
+        {{ langService.getText('أمراض جلدية وليزر بخبرة واحترافية', 'Dermatology and laser care with expertise and professionalism') }}
+      </p>
+
+      <div class="hero-actions">
+        <a
+          routerLink="/book-appointment"
+          class="btn btn-primary"
+        >
+          {{ langService.getText('احجز موعد', 'Book Appointment') }}
+        </a>
+
+        <a
+          routerLink="/services"
+          class="btn btn-outline"
+        >
+          {{ langService.getText('اكتشف خدماتنا', 'Discover Our Services') }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+<section class="cta">
+  <img
+    src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=1800&q=70&auto=format&fit=crop"
+    alt=""
+    class="cta-bg"
+    aria-hidden="true"
+  />
+  <div class="cta-overlay"></div>
+  <div class="container">
+    <div class="cta-content">
+      <span class="cta-eyebrow">{{ langService.getText('ابدأ رحلتك', 'Start Your Journey') }}</span>
+      <h2 class="cta-title">
+        {{ langService.getText(
+          'جاهز لتحسين بشرتك؟',
+          'Ready to improve your skin?'
+        )}}
+      </h2>
+      <p class="cta-subtitle">
+        {{ langService.getText(
+          'احجز موعدك اليوم واستمتع ببشرة صحية ومشرقة مع عيادات ذا ميد التخصصية',
+          'Book your appointment today and enjoy healthy, glowing skin with The Med Clinics'
+        )}}
+      </p>
+      <div class="cta-actions">
+        <a 
+          routerLink="/book-appointment" 
+          class="cta-btn cta-primary"
+        >
+          {{ langService.getText('احجز موعدك الآن', 'Book Your Appointment') }}
+        </a>
+        <a 
+          routerLink="/contact" 
+          class="cta-btn cta-secondary"
+        >
+          {{ langService.getText('تواصل معنا', 'Contact Us') }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

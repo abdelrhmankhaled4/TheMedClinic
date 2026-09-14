@@ -1,0 +1,217 @@
+<section class="booking section-padding">
+  <div class="container">
+    <div class="booking-grid">
+      <div class="booking-info">
+        <h2 class="section-title">
+          {{ langService.getText('احجز موعدك', 'Book Your Appointment') }}
+        </h2>
+        <p class="section-subtitle">
+          {{ langService.getText(
+            'املأ النموذج وسنتواصل معك لتأكيد الموعد',
+            'Fill the form and we will contact you to confirm the appointment'
+          )}}
+        </p>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="contact-icon">
+              <app-icon name="phone" [size]="32"></app-icon>
+            </span>
+            <div class="contact-details">
+              <span class="contact-label">{{ langService.getText('الهاتف', 'Phone') }}</span>
+              <a [href]="'tel:' + clinicData.contact.phone" class="contact-value">
+                {{ clinicData.contact.phone }}
+              </a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <span class="contact-icon">
+              <app-icon name="location" [size]="32"></app-icon>
+            </span>
+            <div class="contact-details">
+              <span class="contact-label">{{ langService.getText('العنوان', 'Address') }}</span>
+              <span class="contact-value">
+                {{ langService.getText(clinicData.address.ar, clinicData.address.en) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="booking-form-container">
+        <form 
+          [formGroup]="bookingForm" 
+          (ngSubmit)="onSubmit()"
+          class="booking-form"
+        >
+          <div class="form-group">
+            <label for="name">
+              {{ langService.getText('الاسم بالكامل', 'Full Name') }}
+              <span class="required">*</span>
+            </label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              [placeholder]="langService.getText('أدخل اسمك الكامل', 'Enter your full name')"
+              [class.error]="bookingForm.get('name')?.touched && bookingForm.get('name')?.invalid"
+            />
+            <span 
+              class="error-message" 
+              *ngIf="bookingForm.get('name')?.touched && bookingForm.get('name')?.hasError('required')"
+            >
+              {{ langService.getText('هذا الحقل مطلوب', 'This field is required') }}
+            </span>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">
+              {{ langService.getText('رقم الهاتف', 'Phone Number') }}
+              <span class="required">*</span>
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              formControlName="phone"
+              [placeholder]="langService.getText('01xxxxxxxxx', '01xxxxxxxxx')"
+              [class.error]="bookingForm.get('phone')?.touched && bookingForm.get('phone')?.invalid"
+            />
+            <span 
+              class="error-message" 
+              *ngIf="bookingForm.get('phone')?.touched && bookingForm.get('phone')?.hasError('required')"
+            >
+              {{ langService.getText('هذا الحقل مطلوب', 'This field is required') }}
+            </span>
+            <span 
+              class="error-message" 
+              *ngIf="bookingForm.get('phone')?.touched && bookingForm.get('phone')?.hasError('pattern')"
+            >
+              {{ langService.getText('رقم هاتف مصري غير صالح', 'Invalid Egyptian phone number') }}
+            </span>
+          </div>
+          
+          <div class="form-group">
+            <label for="service">
+              {{ langService.getText('الخدمة', 'Service') }}
+              <span class="required">*</span>
+            </label>
+            <select
+              id="service"
+              formControlName="service"
+              [class.error]="bookingForm.get('service')?.touched && bookingForm.get('service')?.invalid"
+            >
+              <option value="">
+                {{ langService.getText('اختر الخدمة', 'Select Service') }}
+              </option>
+              <option 
+                *ngFor="let service of services" 
+                [value]="service.id"
+              >
+                {{ langService.getText(service.name.ar, service.name.en) }}
+              </option>
+            </select>
+            <span 
+              class="error-message" 
+              *ngIf="bookingForm.get('service')?.touched && bookingForm.get('service')?.hasError('required')"
+            >
+              {{ langService.getText('هذا الحقل مطلوب', 'This field is required') }}
+            </span>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">
+                {{ langService.getText('التاريخ', 'Date') }}
+                <span class="required">*</span>
+              </label>
+              <input
+                id="date"
+                type="date"
+                formControlName="date"
+                [class.error]="bookingForm.get('date')?.touched && bookingForm.get('date')?.invalid"
+              />
+              <span 
+                class="error-message" 
+                *ngIf="bookingForm.get('date')?.touched && bookingForm.get('date')?.hasError('required')"
+              >
+                {{ langService.getText('هذا الحقل مطلوب', 'This field is required') }}
+              </span>
+            </div>
+            
+            <div class="form-group">
+              <label for="time">
+                {{ langService.getText('الوقت', 'Time') }}
+                <span class="required">*</span>
+              </label>
+              <select
+                id="time"
+                formControlName="time"
+                [class.error]="bookingForm.get('time')?.touched && bookingForm.get('time')?.invalid"
+              >
+                <option value="">
+                  {{ langService.getText('اختر الوقت', 'Select Time') }}
+                </option>
+                <option *ngFor="let time of timeSlots" [value]="time">
+                  {{ time }}
+                </option>
+              </select>
+              <span 
+                class="error-message" 
+                *ngIf="bookingForm.get('time')?.touched && bookingForm.get('time')?.hasError('required')"
+              >
+                {{ langService.getText('هذا الحقل مطلوب', 'This field is required') }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="notes">
+              {{ langService.getText('ملاحظات', 'Notes') }}
+            </label>
+            <textarea
+              id="notes"
+              formControlName="notes"
+              rows="3"
+              [placeholder]="langService.getText('أي ملاحظات إضافية (اختياري)', 'Any additional notes (optional)')"
+            ></textarea>
+          </div>
+          
+          <button 
+            type="submit" 
+            class="submit-btn"
+            [disabled]="bookingForm.invalid || isLoading"
+          >
+            <span *ngIf="!isLoading">
+              {{ langService.getText('تأكيد الحجز', 'Confirm Booking') }}
+            </span>
+            <span *ngIf="isLoading" class="loading-spinner">
+              {{ langService.getText('جاري الإرسال...', 'Sending...') }}
+            </span>
+          </button>
+        </form>
+        
+        <div
+          class="success-message"
+          *ngIf="isSuccess"
+        >
+          <span class="success-icon">
+            <app-icon name="check" [size]="48"></app-icon>
+          </span>
+          <h3>{{ langService.getText('تم استلام طلبك بنجاح!', 'Your request has been received successfully!') }}</h3>
+          <p>
+            {{ langService.getText('رقم الحجز المرجعي:', 'Booking reference number:') }}
+            <strong>{{ bookingReference }}</strong>
+          </p>
+          <p>{{ langService.getText('سنتواصل معك قريباً لتأكيد الموعد', 'We will contact you soon to confirm the appointment') }}</p>
+          <button
+            class="new-booking-btn"
+            (click)="resetForm()"
+          >
+            {{ langService.getText('حجز جديد', 'New Booking') }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

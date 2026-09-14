@@ -1,0 +1,50 @@
+<section class="hours section-padding">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        {{ langService.getText('ساعات العمل', 'Working Hours') }}
+      </h2>
+      <p class="section-subtitle">
+        {{ langService.getText(
+          'نحن هنا لخدمتك طوال الأسبوع',
+          'We are here to serve you all week'
+        )}}
+      </p>
+    </div>
+    
+    <div class="hours-grid">
+      <div 
+        class="hour-card" 
+        *ngFor="let day of days"
+        [class.today]="isToday(day.key)"
+      >
+        <div class="day-name">
+          {{ langService.getText(day.nameAr, day.nameEn) }}
+          <span *ngIf="isToday(day.key)" class="today-badge">
+            {{ langService.getText('اليوم', 'Today') }}
+          </span>
+        </div>
+        <div class="day-hours">
+          <span *ngIf="clinicData.hours[day.key]?.closed" class="closed">
+            {{ langService.getText('مغلق', 'Closed') }}
+          </span>
+          <span *ngIf="!clinicData.hours[day.key]?.closed">
+            {{ clinicData.hours[day.key]?.open }}
+            <span *ngIf="clinicData.hours[day.key]?.close">
+              - {{ clinicData.hours[day.key]?.close }}
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hours-note">
+      <p>
+        {{ langService.getText(
+          'ملاحظة: أوقات الافتتاح قابلة للتغيير. يرجى الاتصال بنا للتأكد من المواعيد الحالية.',
+          'Note: Opening times are subject to change. Please contact us to confirm current schedules.'
+        )}}
+      </p>
+    </div>
+  </div>
+</section>

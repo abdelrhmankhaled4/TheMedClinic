@@ -1,0 +1,20 @@
+<section class="trust-features section-padding">
+  <div class="container">
+    <div class="features-grid">
+      <div 
+        class="feature-card" 
+        *ngFor="let feature of features"
+      >
+        <div class="feature-icon">
+          <app-icon [name]="feature.icon" [size]="48"></app-icon>
+        </div>
+        <h3 class="feature-title">
+          {{ langService.getText(feature.title.ar, feature.title.en) }}
+        </h3>
+        <p class="feature-description">
+          {{ langService.getText(feature.description.ar, feature.description.en) }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

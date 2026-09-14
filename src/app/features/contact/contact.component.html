@@ -1,0 +1,58 @@
+<div class="contact-page">
+  <div class="page-header">
+    <h1 class="page-title">
+      {{ langService.getText('تواصل معنا', 'Contact Us') }}
+    </h1>
+    <p class="page-subtitle">
+      {{ langService.getText(
+        'نحن هنا للإجابة على استفساراتك ومساعدتك',
+        'We are here to answer your questions and help you'
+      )}}
+    </p>
+  </div>
+  
+  <div class="contact-content">
+    <div class="contact-info">
+      <div class="info-card">
+        <div class="info-icon">
+          <app-icon name="phone" [size]="48"></app-icon>
+        </div>
+        <h3>{{ langService.getText('الهاتف', 'Phone') }}</h3>
+        <a href="tel:01035266226" class="info-link">01035266226</a>
+      </div>
+      
+      <div class="info-card">
+        <div class="info-icon">
+          <app-icon name="location" [size]="48"></app-icon>
+        </div>
+        <h3>{{ langService.getText('العنوان', 'Address') }}</h3>
+        <p class="info-text">
+          Unit 18A & 18B - Italian Square Mall, October Gardens, Giza
+        </p>
+      </div>
+      
+      <div class="info-card">
+        <div class="info-icon">
+          <app-icon name="clock" [size]="48"></app-icon>
+        </div>
+        <h3>{{ langService.getText('ساعات العمل', 'Working Hours') }}</h3>
+        <p class="info-text">{{ langService.getText('يفتح الساعة 10 صباحاً', 'Opens at 10:00 AM') }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="contact-actions">
+    <a 
+      routerLink="/book-appointment" 
+      class="action-btn primary"
+    >
+      {{ langService.getText('احجز موعد', 'Book Appointment') }}
+    </a>
+    <a 
+      href="tel:01035266226" 
+      class="action-btn secondary"
+    >
+      {{ langService.getText('اتصل بنا', 'Call Us') }}
+    </a>
+  </div>
+</div>

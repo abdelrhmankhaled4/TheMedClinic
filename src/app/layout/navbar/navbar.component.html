@@ -1,0 +1,64 @@
+<nav [class.scrolled]="isScrolled" class="navbar">
+  <div class="navbar-container">
+    <a routerLink="/" class="logo" (click)="closeMobile()">
+      <app-logo></app-logo>
+    </a>
+
+    <div class="nav-links" [class.mobile-open]="mobileOpen">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        (click)="closeMobile()"
+      >{{ langService.getText('الرئيسية', 'Home') }}</a>
+
+      <a
+        routerLink="/about"
+        routerLinkActive="active"
+        (click)="closeMobile()"
+      >{{ langService.getText('عن العيادة', 'About') }}</a>
+
+      <a
+        routerLink="/services"
+        routerLinkActive="active"
+        (click)="closeMobile()"
+      >{{ langService.getText('خدماتنا', 'Services') }}</a>
+
+      <a
+        routerLink="/gallery"
+        routerLinkActive="active"
+        (click)="closeMobile()"
+      >{{ langService.getText('المعرض', 'Gallery') }}</a>
+
+      <a
+        routerLink="/book-appointment"
+        class="nav-cta"
+        routerLinkActive="active"
+        (click)="closeMobile()"
+      >{{ langService.getText('احجز موعد', 'Book Appointment') }}</a>
+
+      <a
+        routerLink="/contact"
+        routerLinkActive="active"
+        (click)="closeMobile()"
+      >{{ langService.getText('تواصل معنا', 'Contact') }}</a>
+
+      <button
+        (click)="toggleLanguage()"
+        class="lang-toggle"
+        [attr.aria-label]="langService.getText('تغيير اللغة', 'Change Language')"
+      >
+        {{ langService.currentLang() === 'ar' ? 'EN' : 'عربي' }}
+      </button>
+    </div>
+
+    <button
+      class="hamburger"
+      (click)="toggleMobile()"
+      [attr.aria-label]="langService.getText('القائمة', 'Menu')"
+      [attr.aria-expanded]="mobileOpen"
+    >
+      <app-icon [name]="mobileOpen ? 'close' : 'menu'" [size]="24"></app-icon>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,166 @@
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header">
+      <div class="header-badge">
+        <app-icon name="google" [size]="16"></app-icon>
+        <span class="badge-star">★</span>
+        <span>{{ langService.getText('تقييمات معتمدة من Google', 'Verified Google Reviews') }}</span>
+      </div>
+      <h2 class="section-title">
+        {{ langService.getText('ماذا يقول عملاؤنا عنا', 'What Our Patients Say') }}
+      </h2>
+      <p class="section-subtitle">
+        {{ langService.getText(
+          'نفخر بثقة مراجعينا وتجاربهم الإيجابية مع خدمات الليزر والأمراض الجلدية في عيادات ذا ميد',
+          'We take pride in our patients trust and their positive experiences with our dermatology and laser care'
+        )}}
+      </p>
+    </div>
+
+    <!-- Google Trust Stats Bar -->
+    <div class="trust-stats-bar">
+      <div class="stats-score-block">
+        <div class="score-number">{{ clinicData.rating.score }}</div>
+        <div class="score-details">
+          <div class="stars-row">
+            <span *ngFor="let s of [1,2,3,4,5]" class="gold-star">★</span>
+          </div>
+          <span class="total-reviews">
+            {{ clinicData.rating.totalReviews }}+ {{ langService.getText('تقييم معتمد', 'verified reviews') }}
+          </span>
+        </div>
+        <div class="google-badge-pill">
+          <app-icon name="google" [size]="18"></app-icon>
+          <span>Reviews</span>
+        </div>
+      </div>
+
+      <div class="stats-divider"></div>
+
+      <div class="stats-highlights">
+        <div class="highlight-item">
+          <span class="highlight-value">99%</span>
+          <span class="highlight-label">{{ langService.getText('نسبة رضا المرضى', 'Patient Satisfaction') }}</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-value">100%</span>
+          <span class="highlight-label">{{ langService.getText('معايير النظافة والتعقيم', 'Sterilization Standard') }}</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-value">5.0</span>
+          <span class="highlight-label">{{ langService.getText('تقييم خبرة د. نادا', 'Dr. Nada & Team') }}</span>
+        </div>
+      </div>
+
+      <div class="stats-cta">
+        <a 
+          [href]="clinicData.address.googleMapsUrl" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="google-review-btn"
+        >
+          <app-icon name="google" [size]="16"></app-icon>
+          <span>{{ langService.getText('اكتب تقييمك على Google', 'Review Us on Google') }}</span>
+          <app-icon name="external-link" [size]="14"></app-icon>
+        </a>
+      </div>
+    </div>
+
+    <!-- Reviews Carousel -->
+    <div class="reviews-slider-wrap">
+      <!-- Navigation Controls Top Right on desktop -->
+      <div class="slider-header-controls">
+        <span class="slider-count">
+          {{ currentSlide + 1 }} / {{ totalSlides }}
+        </span>
+        <div class="nav-arrows">
+          <button 
+            class="nav-btn nav-prev" 
+            (click)="prevSlide()"
+            [disabled]="currentSlide === 0"
+            [attr.aria-label]="langService.getText('السابق', 'Previous')"
+          >
+            <app-icon name="arrow-left" [size]="18" class="nav-icon-prev"></app-icon>
+          </button>
+          <button 
+            class="nav-btn nav-next" 
+            (click)="nextSlide()"
+            [disabled]="currentSlide >= maxSlide"
+            [attr.aria-label]="langService.getText('التالي', 'Next')"
+          >
+            <app-icon name="arrow-right" [size]="18" class="nav-icon-next"></app-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Carousel Container -->
+      <div class="slider-track-container">
+        <div 
+          class="slider-track"
+          [style.transform]="getTransformStyle()"
+        >
+          <div 
+            class="review-slide" 
+            *ngFor="let review of reviews; let i = index"
+          >
+            <div class="luxury-review-card">
+              <div class="card-quote-watermark">"</div>
+              
+              <!-- Reviewer Header -->
+              <div class="reviewer-header">
+                <div class="avatar-circle">
+                  <span>{{ review.initials || review.author.charAt(0) }}</span>
+                </div>
+                <div class="reviewer-info">
+                  <div class="name-badge-row">
+                    <h4 class="reviewer-name">{{ review.author }}</h4>
+                    <span class="verified-pill">
+                      <app-icon name="check" [size]="12"></app-icon>
+                      {{ langService.getText('مريض موثق', 'Verified') }}
+                    </span>
+                  </div>
+                  <div class="review-date-platform">
+                    <app-icon name="google" [size]="12"></app-icon>
+                    <span>{{ langService.getText('تقييم Google', 'Google Review') }} • {{ review.date }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stars -->
+              <div class="review-stars-row">
+                <span *ngFor="let s of [1,2,3,4,5]" class="gold-star-card">★</span>
+              </div>
+
+              <!-- Comment Text -->
+              <p class="review-comment">
+                {{ review.comment ? langService.getText(review.comment.ar, review.comment.en) : '' }}
+              </p>
+
+              <!-- Theme Tags -->
+              <div class="theme-tags-container">
+                <span 
+                  class="theme-chip" 
+                  *ngFor="let theme of langService.isRTL() ? review.themes.ar : review.themes.en"
+                >
+                  {{ theme }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dots Pagination -->
+      <div class="slider-dots">
+        <button 
+          *ngFor="let r of reviews; let i = index"
+          class="dot-pill"
+          [class.active]="i === currentSlide"
+          (click)="goToSlide(i)"
+          [attr.aria-label]="langService.getText('الشريحة ' + (i + 1), 'Slide ' + (i + 1))"
+        ></button>
+      </div>
+    </div>
+  </div>
+</section>

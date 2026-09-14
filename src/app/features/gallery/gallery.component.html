@@ -1,0 +1,86 @@
+<section class="gallery section-padding">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        {{ langService.getText('معرض الصور', 'Photo Gallery') }}
+      </h2>
+      <p class="section-subtitle">
+        {{ langService.getText(
+          'جولة داخل عيادات ذا ميد التخصصية',
+          'A tour inside The Med Clinics'
+        )}}
+      </p>
+    </div>
+    
+    <div class="gallery-grid">
+      <div 
+        class="gallery-item" 
+        *ngFor="let image of images; let i = index"
+        (click)="openLightbox(i)"
+      >
+        <div class="image-placeholder">
+          <div class="placeholder-content">
+            <span class="placeholder-icon">
+              <app-icon name="camera" [size]="48"></app-icon>
+            </span>
+            <span class="placeholder-text">{{ langService.getText(image.alt.ar, image.alt.en) }}</span>
+          </div>
+        </div>
+        <div class="item-overlay">
+          <span class="overlay-icon">
+            <app-icon name="search" [size]="24"></app-icon>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div 
+  class="lightbox" 
+  *ngIf="lightboxOpen"
+  (click)="closeLightbox()"
+>
+  <button
+    class="lightbox-close"
+    (click)="closeLightbox()"
+    [attr.aria-label]="langService.getText('إغلاق', 'Close')"
+  >
+    <app-icon name="close" [size]="24"></app-icon>
+  </button>
+  
+  <button
+    class="lightbox-nav lightbox-prev"
+    (click)="prevImage($event)"
+    [attr.aria-label]="langService.getText('السابق', 'Previous')"
+    [disabled]="currentIndex === 0"
+  >
+    <app-icon name="arrow-left" [size]="24"></app-icon>
+  </button>
+  
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <div class="lightbox-image">
+      <div class="image-placeholder large">
+        <div class="placeholder-content">
+          <span class="placeholder-icon">
+            <app-icon name="camera" [size]="48"></app-icon>
+          </span>
+          <span class="placeholder-text">{{ langService.getText(images[currentIndex].alt.ar, images[currentIndex].alt.en) }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="lightbox-caption">
+      {{ langService.getText(images[currentIndex].alt.ar, images[currentIndex].alt.en) }}
+    </div>
+  </div>
+  
+  <button
+    class="lightbox-nav lightbox-next"
+    (click)="nextImage($event)"
+    [attr.aria-label]="langService.getText('التالي', 'Next')"
+    [disabled]="currentIndex === images.length - 1"
+  >
+    <app-icon name="arrow-right" [size]="24"></app-icon>
+  </button>
+</div>

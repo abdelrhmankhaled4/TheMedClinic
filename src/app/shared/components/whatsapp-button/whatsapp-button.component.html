@@ -1,0 +1,14 @@
+<a
+  [href]="whatsappUrl"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="whatsapp-float"
+  [attr.aria-label]="langService.getText('تواصل معنا عبر واتساب', 'Contact us on WhatsApp')"
+>
+  <span class="whatsapp-icon">
+    <app-icon name="whatsapp" [size]="28"></app-icon>
+  </span>
+  <span class="whatsapp-tooltip">
+    {{ langService.getText('تواصل معنا', 'Contact Us') }}
+  </span>
+</a>

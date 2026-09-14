@@ -1,0 +1,117 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon">
+            <app-icon name="sparkles" [size]="24"></app-icon>
+          </span>
+          <span class="logo-text">{{ langService.getText(clinicData.name.ar, clinicData.name.en) }}</span>
+        </div>
+        <p class="footer-description">
+          {{ langService.getText(
+            'عيادات ذا ميد التخصصية - عناية متخصصة ببشرتك بخبرة واحترافية',
+            'The Med Clinics - Specialized skincare with expertise and professionalism'
+          )}}
+        </p>
+        <div class="footer-contact">
+          <a [href]="'tel:' + clinicData.contact.phone" class="contact-link">
+            <span class="contact-icon">
+              <app-icon name="phone" [size]="20"></app-icon>
+            </span>
+            {{ clinicData.contact.phone }}
+          </a>
+          <a
+            [href]="'https://wa.me/' + clinicData.contact.whatsapp"
+            class="contact-link whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="contact-icon">
+              <app-icon name="whatsapp" [size]="20"></app-icon>
+            </span>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3>{{ langService.getText('روابط سريعة', 'Quick Links') }}</h3>
+        <ul>
+          <li><a routerLink="/">{{ langService.getText('الرئيسية', 'Home') }}</a></li>
+          <li><a routerLink="/about">{{ langService.getText('عن العيادة', 'About') }}</a></li>
+          <li><a routerLink="/services">{{ langService.getText('خدماتنا', 'Services') }}</a></li>
+          <li><a routerLink="/gallery">{{ langService.getText('المعرض', 'Gallery') }}</a></li>
+          <li><a routerLink="/contact">{{ langService.getText('تواصل معنا', 'Contact') }}</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3>{{ langService.getText('خدماتنا', 'Our Services') }}</h3>
+        <ul>
+          <li><a routerLink="/services">{{ langService.getText('جلسات الليزر', 'Laser Sessions') }}</a></li>
+          <li><a routerLink="/services">{{ langService.getText('علاج الأمراض الجلدية', 'Dermatology') }}</a></li>
+          <li><a routerLink="/services">{{ langService.getText('العناية بالبشرة', 'Skincare') }}</a></li>
+          <li><a routerLink="/services">{{ langService.getText('علاج التصبغات', 'Pigmentation') }}</a></li>
+          <li><a routerLink="/services">{{ langService.getText('علاج حب الشباب', 'Acne Treatment') }}</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact-info">
+        <h3>{{ langService.getText('معلومات الاتصال', 'Contact Info') }}</h3>
+        <div class="contact-item">
+          <span class="item-icon">
+            <app-icon name="location" [size]="20"></app-icon>
+          </span>
+          <span class="item-text">
+            {{ langService.getText(clinicData.address.ar, clinicData.address.en) }}
+          </span>
+        </div>
+        <div class="contact-item">
+          <span class="item-icon">
+            <app-icon name="clock" [size]="20"></app-icon>
+          </span>
+          <span class="item-text">
+            {{ langService.getText('يفتح الساعة 10 صباحاً', 'Opens at 10:00 AM') }}
+          </span>
+        </div>
+        <div class="social-links">
+          <a
+            href="#"
+            class="social-link"
+            [attr.aria-label]="'Facebook'"
+          >
+            <span class="social-icon">
+              <app-icon name="facebook" [size]="20"></app-icon>
+            </span>
+          </a>
+          <a
+            href="#"
+            class="social-link"
+            [attr.aria-label]="'Instagram'"
+          >
+            <span class="social-icon">
+              <app-icon name="instagram" [size]="20"></app-icon>
+            </span>
+          </a>
+          <a
+            href="#"
+            class="social-link"
+            [attr.aria-label]="'Twitter'"
+          >
+            <span class="social-icon">
+              <app-icon name="twitter" [size]="20"></app-icon>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="copyright">
+        © 2026 {{ langService.getText(clinicData.name.ar, clinicData.name.en) }}. 
+        {{ langService.getText('جميع الحقوق محفوظة', 'All rights reserved') }}.
+      </div>
+    </div>
+  </div>
+</footer>

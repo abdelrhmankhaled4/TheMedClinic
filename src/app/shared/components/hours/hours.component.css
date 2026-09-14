@@ -1,0 +1,167 @@
+/* Working Hours Section - Premium Black & White Design */
+.hours {
+  background: #F7F7F7;
+  padding: 5rem 5%;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-title {
+  font-size: 2.75rem;
+  color: #000000;
+  margin: 0 0 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: #6B6B6B;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.hours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  max-width: 1000px;
+  margin: 0 auto 2.5rem;
+}
+
+.hour-card {
+  background: #FFFFFF;
+  padding: 1.75rem 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid #E5E5E5;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.hour-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  border-color: #000000;
+}
+
+.hour-card.today {
+  border-color: #000000;
+  border-width: 2px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.day-name {
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.today-badge {
+  background: #000000;
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.day-hours {
+  color: #6B6B6B;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.closed {
+  color: #DC2626;
+  font-weight: 600;
+}
+
+.hours-note {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  padding: 1.25rem 1.75rem;
+  border-radius: 16px;
+  border: 1px solid #E5E5E5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.hours-note p {
+  color: #6B6B6B;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .hours-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hours {
+    padding: 3.5rem 5%;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .hours-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .hour-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .hours-note {
+    padding: 1rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hours {
+    padding: 3rem 5%;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .hours-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .day-name {
+    font-size: 1rem;
+  }
+
+  .day-hours {
+    font-size: 0.95rem;
+  }
+
+  .hours-note p {
+    font-size: 0.85rem;
+  }
+}
